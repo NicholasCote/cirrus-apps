@@ -1,0 +1,24 @@
+{{- if .Values.pythia24-viz.enable }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pythia24-viz
+  namespace: argocd
+spec:
+  destination:
+    namespace: ncote-test
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    helm:
+      valueFiles: {}
+    path: helm-charts/pythia24-viz
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+{{- end }}

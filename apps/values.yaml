@@ -1,0 +1,12 @@
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/NicholasCote/cirrus-apps.git
+    targetRevision: HEAD
+ncote:
+  enable: false
+ncote-test:
+  enable: false
+pythia24-viz:
+  enable: true
